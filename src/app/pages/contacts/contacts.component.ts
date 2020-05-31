@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngx-vendors',
+  selector: 'ngx-contacts',
   template: `<router-outlet></router-outlet>`,
 })
-export class VendorsComponent {}
+export class ContactsComponent {}

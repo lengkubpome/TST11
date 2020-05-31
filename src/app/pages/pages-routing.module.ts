@@ -13,12 +13,12 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
       },
-
       {
-        path: 'vendors',
+        path: 'contacts',
         loadChildren: () =>
-          import('./vendors/vendors.module').then((m) => m.VendorsModule),
+          import('./contacts/contacts.module').then((m) => m.ContactsModule),
       },
+
       {
         path: '',
         redirectTo: 'dashboard',
