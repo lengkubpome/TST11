@@ -8,7 +8,9 @@
       [matRippleCentered]="true"
       (click)="toggleSidebar()"
     >
-      <nb-icon [icon]="(materialTheme$ | async) ? 'menu-outline' : 'menu-2-outline'"></nb-icon>
+      <nb-icon
+        [icon]="(materialTheme$ | async) ? 'menu-outline' : 'menu-2-outline'"
+      ></nb-icon>
     </a>
     <a class="logo" href="#" (click)="navigateHome()">ngx-<span>admin</span></a>
   </div>
@@ -18,25 +20,23 @@
     [selected]="currentTheme"
     (selectedChange)="changeTheme($event)"
   >
-    <nb-option
-      *ngFor="let theme of themes"
-      [value]="theme.value"
-      matRipple
-    >{{ theme.name }}</nb-option>
+    <nb-option *ngFor="let theme of themes" [value]="theme.value" matRipple>{{
+      theme.name
+    }}</nb-option>
   </nb-select>
-  <ngx-layout-direction-switcher class="direction-switcher"></ngx-layout-direction-switcher>
+  <!-- <ngx-layout-direction-switcher class="direction-switcher"></ngx-layout-direction-switcher> -->
 </div>
 
 <div class="header-container">
   <nb-actions size="small">
-
     <nb-action class="control-item">
       <nb-search
         type="rotate-layout"
         matRipple
         [matRippleUnbounded]="true"
         [matRippleCentered]="true"
-      ></nb-search></nb-action>
+      ></nb-search
+    ></nb-action>
     <nb-action
       class="control-item"
       icon="email-outline"
@@ -56,11 +56,14 @@
       *nbIsGranted="['view', 'user']"
       matRipple
       [matRippleUnbounded]="true"
-      [matRippleCentered]="true">
-      <nb-user [nbContextMenu]="userMenu"
-               [onlyPicture]="userPictureOnly"
-               [name]="user?.name"
-               [picture]="user?.picture">
+      [matRippleCentered]="true"
+    >
+      <nb-user
+        [nbContextMenu]="userMenu"
+        [onlyPicture]="userPictureOnly"
+        [name]="user?.name"
+        [picture]="user?.picture"
+      >
       </nb-user>
     </nb-action>
   </nb-actions>

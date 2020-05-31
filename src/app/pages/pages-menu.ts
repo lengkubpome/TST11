@@ -8,6 +8,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'Vendors',
+    icon: 'download-outline',
+    link: '/pages/vendors',
+    home: true,
+  },
+  {
     title: 'FEATURES',
     group: true,
   },
