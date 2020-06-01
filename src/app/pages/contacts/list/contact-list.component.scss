@@ -1,0 +1,67 @@
+.search-label {
+  display: block;
+}
+
+.search-input {
+  margin-bottom: 1rem;
+}
+
+.form-inline {
+  flex: 1;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.form-inline > * {
+  // margin: 0 1.5rem 1.5rem 0;
+}
+
+nb-card.inline-form-card nb-card-body {
+  padding-bottom: 0;
+}
+
+// ****
+
+// :host /deep/ ng2-smart-table tbody {
+// 	tr.selected > td {
+// 		color: #3366ff;
+// 	}
+// 	tr.aborted:hover > td ,
+// 	tr.selected:hover > td {
+// 		color: #0095ff;
+// 	}
+// }
+
+// :host /deep/ ng2-smart-table table {
+// 	// border-style: inset;
+// 	// border-color: initial;
+// 	// border-image: initial;
+// 	// border-width: 2px;
+
+// 	display: table;
+// 	// border-spacing: 2px;
+// 	// border-color: grey;
+// 	/* border of the big table*/
+// }
+
+// /* grid lines */
+// :host /deep/ ng2-smart-table table > tbody > tr > td {
+// 	// box-sizing: border-box;
+// 	// border: 1px solid grey;
+// }
+
+// /* headers grid color*/
+// :host /deep/ ng2-smart-table thead > tr > th {
+// 	// border: 1px solid grey;
+// 	// background-color: #673ab7;
+// 	text-align: center;
+// }
+
+// /*font size*/
+// :host /deep/ ng2-smart-table {
+// 	font-size: 16px;
+// }
+
+nb-icon.header {
+  margin: 0.5rem;
+}

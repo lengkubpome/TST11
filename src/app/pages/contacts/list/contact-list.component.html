@@ -1,1 +1,55 @@
-<p>contact-list works!</p>
+<nb-card>
+  <nb-card-header>
+    <!-- <nb-icon icon="people"
+      [options]="{ fill:'red', width:'36px', animation: { type: 'pulse' } }">
+    </nb-icon> -->
+    <!-- Animation => (zoom, pulse, shake and flip) -->
+    <nb-icon
+      icon="people"
+      [options]="{ animation: { type: 'shake' } }"
+      class="header"
+    >
+    </nb-icon>
+    Contacts
+  </nb-card-header>
+  <nb-card-body>
+    <div class="form-inline">
+      <input
+        nbInput
+        id="search"
+        class="search-input"
+        placeholder="ค้นหา"
+        (keyup)="onFilter($event.target.value)"
+      />
+      <button
+        type="button"
+        nbButton
+        shape="round"
+        status="info"
+        (click)="openCreateProduct()"
+      >
+        <nb-icon icon="plus"></nb-icon>
+        เพิ่มผู้ติดต่อ
+      </button>
+    </div>
+
+    <ng2-smart-table
+      [settings]="settings"
+      [source]="source"
+      allowFiltering="false"
+      allowPaging="true"
+      (deleteConfirm)="onDeleteConfirm($event)"
+      (userRowSelect)="onUserRowSelect($event)"
+    >
+      <!-- <ng2-smart-table
+      [settings]="settings"
+      [source]="source"
+      allowFiltering="false"
+      allowPaging="true"
+      (edit)="openEditProduct($event.data)"
+      (deleteConfirm)="onDeleteConfirm($event)"
+      (userRowSelect)="onUserRowSelect($event)"
+    > -->
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
