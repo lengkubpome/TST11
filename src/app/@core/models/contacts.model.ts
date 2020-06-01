@@ -2,7 +2,7 @@ import { Car } from './car.model';
 
 export interface Contacts {
   id: String;
-  contactType: {
+  contactType?: {
     vendor: boolean;
     customer: boolean;
     // supplier: boolean;

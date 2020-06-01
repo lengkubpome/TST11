@@ -86,7 +86,7 @@ export class ContactListComponent implements OnInit {
   selectedRows = '';
   onUserRowSelect(event: any) {
     this.selectedRows = event.selected;
-    // console.log(this.selectedRows);
+    console.log(this.selectedRows);
   }
 
   // ================ Dialog ================
@@ -153,8 +153,38 @@ export class ContactListComponent implements OnInit {
               }
             },
           },
+          {
+            field: 'contactType',
+            search: filterValue,
+            filter: (fieldValue: Contacts[], searchValue: string) => {
+              // คัดกรอบแยกคำค้นหาด้วยตัวอักษร ' ', ',', '+'
+              const tmpSearch: string[] = searchValue.split(/[\s,+]+/);
+              // ค้นหาทุกๆค่าใน array
+              const result = tmpSearch.every((tmp) => {
+                for (const key in fieldValue) {
+                  if (key === 'vendor' && fieldValue[key]) {
+                    if (
+                      'VENDOR'.indexOf(tmp.toUpperCase()) !== -1 ||
+                      'ผู้ขาย'.indexOf(tmp.toUpperCase()) !== -1
+                    ) {
+                      return true;
+                    }
+                  } else if (key === 'customer' && fieldValue[key]) {
+                    if (
+                      'CUSTOMER'.indexOf(tmp.toUpperCase()) !== -1 ||
+                      'ผู้รับซื้อ'.indexOf(tmp.toUpperCase()) !== -1
+                    ) {
+                      return true;
+                    }
+                  }
+                }
+              });
+
+              if (result) return fieldValue;
+            },
+          },
         ],
-        false,
+        false
       );
     } else {
       this.source.reset();
