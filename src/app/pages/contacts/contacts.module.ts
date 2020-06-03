@@ -27,16 +27,19 @@ import {
   TableCellContactTypeRenderComponent,
 } from './list/contact-list.component';
 import { ContactsComponent } from './contacts.component';
+import { ContactNewComponent } from './new/contact-new.component';
 
 const COMPONENTS = [
   ContactsComponent,
   ContactListComponent,
+  ContactNewComponent,
   TableCellSuppliersNameRenderComponent,
   TableCellContactTypeRenderComponent,
   TableCellSuppliersContactRenderComponent,
 ];
 
 const ENTRY_COMPONENTS = [
+  ContactNewComponent,
   TableCellSuppliersNameRenderComponent,
   TableCellContactTypeRenderComponent,
   TableCellSuppliersContactRenderComponent,

@@ -1,5 +1,5 @@
 export interface Car {
-  id: string;
+  //  id: string;
   licensePlateId: string;
   licensePlateProvince?: string;
   type?: string;
