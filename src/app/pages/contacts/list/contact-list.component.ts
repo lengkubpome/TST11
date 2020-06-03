@@ -135,7 +135,11 @@ export class ContactListComponent implements OnInit {
         },
         closeOnBackdropClick: false,
 <<<<<<< HEAD
+<<<<<<< HEAD
         closeOnEsc: true,
+=======
+        closeOnEsc: false,
+>>>>>>> 2b3f3b62e732f2618a4549445ba8cdb9cac969f5
 =======
         closeOnEsc: false,
 >>>>>>> 2b3f3b62e732f2618a4549445ba8cdb9cac969f5
