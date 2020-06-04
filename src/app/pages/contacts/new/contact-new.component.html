@@ -1,27 +1,54 @@
-<nb-card class="my-container">
+<nb-card class="wraper">
   <nb-card-body>
-  <nb-card>
-    <nb-card-header>Contact Infomation</nb-card-header>
-    <nb-card-body>
-      <div class="row">
-        <div class="col-lg-6"></div>
-        <input type="text" nbInput fullWidth placeholder="Project">
-        <div class="full-name-inputs">
-          <input type="text" nbInput fullWidth placeholder="Nick">
-          <input type="text" nbInput fullWidth placeholder="Last Name">
+    <nb-card accent="primary">
+      <nb-card-header class="header-container">
+        <span style="align-self: center;">
+          <nb-icon icon="people" [options]="{ animation: { type: 'shake' } }" class="header">
+          </nb-icon>
+          &nbsp;
+          New Contact
+        </span>
+        <span>
+
+          <input type="text" nbInput placeholder="Disabled Text field" disabled>
+        </span>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-md-6">
+            <input type="text" nbInput placeholder="Project">
+            <div class="full-name-inputs">
+              <input type="text" nbInput placeholder="Nick">
+              <input type="text" nbInput placeholder="Last Name">
+            </div>
+            <input type="password" nbInput placeholder="Password">
+            <input type="text" nbInput shape="rectangle" placeholder="Rectangle border">
+            <input type="text" nbInput shape="semi-round" placeholder="Semi-round border">
+            <input type="text" nbInput shape="round" placeholder="Rounded border">
+            <input type="text" nbInput placeholder="Disabled input" disabled />
+            <textarea rows="5" nbInput shape="round" placeholder="Text Area"></textarea>
+            <input type="text" nbInput fieldSize="small" placeholder="Small Input">
+            <input type="text" nbInput fieldSize="medium" placeholder="Medium Input">
+            <input type="text" nbInput fieldSize="large" placeholder="Large Input">
+          </div>
+          <div class="col-md-6">
+            <input type="text" nbInput placeholder="Project">
+            <div class="full-name-inputs">
+              <input type="text" nbInput placeholder="Nick">
+              <input type="text" nbInput placeholder="Last Name">
+            </div>
+          </div>
         </div>
-        <input type="password" nbInput fullWidth placeholder="Password">
-        <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
-        <input type="text" nbInput fullWidth shape="semi-round" placeholder="Semi-round border">
-        <input type="text" nbInput fullWidth shape="round" placeholder="Rounded border">
-        <input type="text" nbInput fullWidth placeholder="Disabled input" disabled/>
-        <textarea rows="5" nbInput fullWidth shape="round"  placeholder="Text Area"></textarea>
-        <input type="text" nbInput fullWidth fieldSize="small"  placeholder="Small Input">
-        <input type="text" nbInput fullWidth fieldSize="medium"  placeholder="Medium Input">
-        <input type="text" nbInput fullWidth fieldSize="large"  placeholder="Large Input">
-        <div class="col-lg-6"></div>
-      </div>
-    </nb-card-body>
-  </nb-card>
+      </nb-card-body>
+      <nb-card-footer class="footer-container">
+        <div>
+          <button nbButton outline status="basic" class="margin-zero">Primary</button>
+        </div>
+        <div>
+          <button nbButton outline status="basic" class="margin-zero">Primary</button>
+        </div>
+
+      </nb-card-footer>
+    </nb-card>
   </nb-card-body>
 </nb-card>
