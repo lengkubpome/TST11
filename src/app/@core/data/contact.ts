@@ -114,7 +114,7 @@ export const DummyContact2: Contacts2[] = [
     branch: { code: '00000', name: 'สำนักงานใหญ่' },
     name: 'โกลด์ 2009',
     taxId: '1409900464861',
-    type: { vendor: true, customer: false, employee: false },
+    type: { vendor: true, customer: false },
     address: {
       line1: '74/1',
       district: 'เมือง',
@@ -138,7 +138,7 @@ export const DummyContact2: Contacts2[] = [
     businessType: 'บุคคลธรรมดา',
     name: 'ก.ไก่2 นามสกุลหรู',
     taxId: '1409900464862',
-    type: { vendor: true, customer: true, employee: false },
+    type: { vendor: true, customer: true },
     individual: {
       prefixName: 'นาย',
       firstName: 'ก.ไก่2',
@@ -171,7 +171,7 @@ export const DummyContact2: Contacts2[] = [
     businessType: 'บุคคลธรรมดา',
     name: 'ข.ไข่ มีเยอะแยะ',
     taxId: '1409900464863',
-    type: { vendor: true, customer: true, employee: false },
+    type: { vendor: true, customer: true },
     individual: {
       prefixName: 'นาย',
       firstName: 'ข.ไข่',
@@ -187,7 +187,7 @@ export const DummyContact2: Contacts2[] = [
     businessType: 'บุคคลธรรมดา',
     name: 'แพท',
     taxId: '349004648633',
-    type: { vendor: false, customer: true, employee: false },
+    type: { vendor: false, customer: true},
     individual: {
       prefixName: 'นางสาว',
       firstName: 'แพท',
@@ -204,7 +204,7 @@ export const DummyContact2: Contacts2[] = [
     branch: { code: '00000', name: 'สำนักงานใหญ่' },
     name: 'ไทยสุทัศน์',
     taxId: '0403549000606',
-    type: { vendor: false, customer: true, employee: false },
+    type: { vendor: false, customer: true},
     address: {
       line1: '135 หมู่ 7',
       district: 'เมือง',

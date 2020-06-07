@@ -69,7 +69,7 @@ export interface Contacts2 {
   type: {
     vendor: boolean;
     customer: boolean;
-    employee: boolean;
+    // employee: boolean;
   };
 
   individual?: {
