@@ -111,7 +111,7 @@ export const DummyContact2: Contacts2[] = [
   {
     id: 'sxiiee',
     businessType: 'บริษัทจำกัด',
-    branch: { code: '00000', name: 'สำนักงานใหญ่' },
+    branchCode: '00000',
     name: 'โกลด์ 2009',
     taxId: '1409900464861',
     type: { vendor: true, customer: false },
