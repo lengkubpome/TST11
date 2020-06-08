@@ -161,7 +161,6 @@ export const DummyContact2: Contacts2[] = [
       { type: 'line', value: '0868551702' },
     ],
     primaryContactInfo: {
-      officeName: 'หจก.ไทยสุทัศน์',
       contactName: 'เฮียเล้ง',
       contactInfo: [{ type: 'phone', value: '0868551701' }],
     },
@@ -223,7 +222,6 @@ export const DummyContact2: Contacts2[] = [
     ],
     primaryContactInfo: {
       contactName: 'ถิรตา แซ่ตั้ง',
-      position: 'รองประธาน',
       contactInfo: [{ type: 'phone', value: '0868551701' }],
     },
   },

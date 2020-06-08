@@ -60,10 +60,7 @@ export interface BankAccount {
 export interface Contacts2 {
   id: String;
   businessType: String; // 'Individual'|'Corporate';
-  branch?: {
-    code: String;
-    name: String;
-  };
+  branchCode: String;
   name: String;
   taxId: String;
   type: {
@@ -86,9 +83,7 @@ export interface Contacts2 {
     value: String;
   }[];
   primaryContactInfo?: {
-    officeName?: String;
     contactName?: String;
-    position?: String; //ตำแหน่ง
     contactInfo?: {
       type: String; //'phone' | 'email' | 'line' | 'Web'
       value: String;
