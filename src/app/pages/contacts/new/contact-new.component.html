@@ -2,11 +2,7 @@
   <nb-card-header class="wraper-header">
     <div style="align-self: center;">
       <h5>
-        <nb-icon
-          icon="people"
-          [options]="{ animation: { type: 'shake' } }"
-          class="header"
-        >
+        <nb-icon icon="people" [options]="{ animation: { type: 'shake' } }" class="header">
         </nb-icon>
         เพิ่มผู้ติดต่อ
       </h5>
@@ -39,16 +35,10 @@
             </div>
 
             <div class="form-group row">
-              <label for="inputPassword2" class="label col-sm-3 col-form-label"
-                >ประเภท</label
-              >
+              <label for="inputPassword2" class="label col-sm-3 col-form-label">ประเภท</label>
               <div class="col-sm-9">
-                <nb-checkbox style="padding-right: 1.5rem;" value="customer"
-                  >ลูกค้า</nb-checkbox
-                >
-                <nb-checkbox style="padding-right: 1.5rem;" value="vendor"
-                  >ผู้จำหน่าย</nb-checkbox
-                >
+                <nb-checkbox style="padding-right: 1.5rem;" value="customer">ลูกค้า</nb-checkbox>
+                <nb-checkbox style="padding-right: 1.5rem;" value="vendor">ผู้จำหน่าย</nb-checkbox>
               </div>
             </div>
 
@@ -60,18 +50,52 @@
                 <input type="text" nbInput fullWidth id="name" placeholder="" />
               </div>
             </div>
+
+            <div class="form-group row">
+              <label for="inputEmail1" class="label col-sm-3 col-form-label">
+                คำนำหน้า
+              </label>
+              <div class="col-sm-9 row">
+                <nb-select selected="1" class="col-sm-2">
+                  <nb-option value="1">นาย</nb-option>
+                  <nb-option value="2">นางสาว</nb-option>
+                  <nb-option value="3s">นาง</nb-option>
+                </nb-select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="inputEmail1" class="label col-sm-3 col-form-label">
+                ขื่อ
+              </label>
+              <div class="col-sm-9">
+                <input type="text" nbInput id="name" placeholder="" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputEmail1" class="label col-sm-3 col-form-label">
+                นามสกุล
+              </label>
+              <div class="col-sm-9">
+                <input type="text" nbInput id="name" placeholder="" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputEmail1" class="label col-sm-3 col-form-label">
+                วัน/เดือน/ปี เกิด
+              </label>
+              <div class="col-sm-9">
+                <input nbInput placeholder="Form Picker" [nbDatepicker]="birtdatepicker">
+                <nb-datepicker #birtdatepicker format="dd/MM/yyyy"></nb-datepicker>
+              </div>
+            </div>
+
             <div class="form-group row">
               <label for="inputEmail1" class="label col-sm-3 col-form-label">
                 เลขผู้เสียภาษี
               </label>
               <div class="col-sm-9">
-                <input
-                  type="text"
-                  nbInput
-                  fullWidth
-                  id="taxId"
-                  placeholder=""
-                />
+                <input type="text" nbInput fullWidth id="taxId" placeholder="" />
               </div>
             </div>
             <div class="form-group row">
@@ -81,27 +105,16 @@
 
               <div class="col-sm-9">
                 <nb-radio-group>
-                  <nb-radio
-                    style="display: initial;"
-                    [value]="'This is value 1'"
-                  >
+                  <nb-radio style="display: initial;" [value]="'This is value 1'">
                     สำนักงานใหญ่
                   </nb-radio>
-                  <nb-radio
-                    style="display: initial;"
-                    [value]="'This is value 2'"
-                  >
+                  <nb-radio style="display: initial;" [value]="'This is value 2'">
                     สาขา
                   </nb-radio>
                 </nb-radio-group>
 
-                <input
-                  style="width: 80px;"
-                  type="text"
-                  nbInput
-                  id="BranchCode"
-                  placeholder="00000"
-                />
+                <input style="width: 80px;" type="text" nbInput id="BranchCode"
+                  placeholder="00000" />
               </div>
             </div>
 
@@ -110,12 +123,7 @@
                 ที่อยู่ตามทะเบียน
               </label>
               <div class="col-sm-9">
-                <textarea
-                  rows="3"
-                  nbInput
-                  fullWidth
-                  placeholder="Text Area"
-                ></textarea>
+                <textarea rows="3" nbInput fullWidth placeholder="Text Area"></textarea>
               </div>
             </div>
 
@@ -124,15 +132,9 @@
                 ที่อยู่ส่งเอกสาร
               </label>
               <div class="col-sm-9">
-                <nb-checkbox style="padding-right: 1.5rem;" value="customer"
-                  >คัดลอกจากที่อยู่ตามทะเบียน</nb-checkbox
-                >
-                <textarea
-                  rows="3"
-                  nbInput
-                  fullWidth
-                  placeholder="Text Area"
-                ></textarea>
+                <nb-checkbox style="padding-right: 1.5rem;" value="customer">
+                  คัดลอกจากที่อยู่ตามทะเบียน</nb-checkbox>
+                <textarea rows="3" nbInput fullWidth placeholder="Text Area"></textarea>
               </div>
             </div>
           </nb-card-body>
