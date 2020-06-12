@@ -2,13 +2,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'ngx-contact-new-info',
-  templateUrl: './contact-new-info.component.html',
-  styleUrls: ['./contact-new-info.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+	selector: 'ngx-contact-new-info',
+	templateUrl: './contact-new-info.component.html',
+	styleUrls: [ './contact-new-info.component.scss' ],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactNewInfoComponent implements OnInit {
-  infoFormGroup: FormGroup;
+	infoFormGroup: FormGroup;
 
   businessTypes: any = [
     { value: 'บริษัทจำกัด', name: 'บริษัทจำกัด' },
@@ -20,7 +20,7 @@ export class ContactNewInfoComponent implements OnInit {
   ];
   businessBranch = '';
 
-  constructor(private fb: FormBuilder) {}
+	constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.infoFormGroup = this.fb.group({

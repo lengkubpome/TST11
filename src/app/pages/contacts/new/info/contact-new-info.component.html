@@ -69,29 +69,34 @@
             </div>
           </div>
 
-          <div
-            class="form-group row"
-            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'"
-          >
+          <div class="form-group row">
+            <label for="taxId" class="label col-sm-3 col-form-label">
+              {{ infoFormGroup.get('businessType').value == 'บุคคลธรรมดา'? 'เลขประจำตัวประชาชน' : 'เลขผู้เสียภาษี'}}
+            </label>
+            <div class="col-sm-9">
+              <nb-form-field>
+                <nb-icon nbSuffix icon="at-outline" pack="eva"></nb-icon>
+                <input type="text" nbInput fullWidth id="taxId" placeholder="0 0000 00000 00 0"
+                  formControlName="taxId" />
+              </nb-form-field>
+
+
+            </div>
+          </div>
+
+          <div class="form-group row"
+            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'">
             <label for="name" class="label col-sm-3 col-form-label">
               ชื่อผู้ติดต่อ
             </label>
             <div class="col-sm-9">
-              <input
-                type="text"
-                nbInput
-                fullWidth
-                id="name"
-                formControlName="name"
-                placeholder=""
-              />
+              <input type="text" nbInput fullWidth id="name" formControlName="name"
+                placeholder="" />
             </div>
           </div>
 
-          <div
-            class="form-group row"
-            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'"
-          >
+          <div class="form-group row"
+            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'">
             <label for="branchCode" class="label col-sm-3 col-form-label">
               สาขา
             </label>
@@ -134,11 +139,7 @@
                 คำนำหน้า
               </label>
               <div class="col-sm-9 row">
-                <nb-select
-                  selected="1"
-                  class="col-sm-2"
-                  formControlName="prefixName"
-                >
+                <nb-select selected="1" class="col-sm-2" formControlName="prefixName">
                   <nb-option value="นาย">นาย</nb-option>
                   <nb-option value="นางสาว">นางสาว</nb-option>
                   <nb-option value="นาง">นาง</nb-option>
@@ -177,26 +178,13 @@
               </div>
             </div>
             <div class="form-group row">
-              <label
-                for="birthDate"
-                fullWidth
-                class="label col-sm-3 col-form-label"
-              >
+              <label for="birthDate" fullWidth class="label col-sm-3 col-form-label">
                 วัน/เดือน/ปี เกิด
               </label>
               <div class="col-sm-9">
-                <input
-                  nbInput
-                  fullWidth
-                  placeholder="วัน/เดือน/ปี เกิด"
-                  [nbDatepicker]="birtdatepicker"
-                  id="birthDate"
-                  formControlName="birthDate"
-                />
-                <nb-datepicker
-                  #birtdatepicker
-                  format="dd/MM/yyyy"
-                ></nb-datepicker>
+                <input nbInput fullWidth placeholder="วัน/เดือน/ปี เกิด"
+                  [nbDatepicker]="birtdatepicker" id="birthDate" formControlName="birthDate" />
+                <nb-datepicker #birtdatepicker format="dd/MM/yyyy"></nb-datepicker>
               </div>
             </div>
           </div>
@@ -291,6 +279,7 @@
               </div>
             </div>
           </div>
+
         </nb-card-body>
       </nb-card>
       <!-- End Infomation Contact -->
@@ -551,6 +540,7 @@
           </div>
         </nb-card-body>
       </nb-card>
+
     </div>
   </div>
 </form>
