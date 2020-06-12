@@ -8,13 +8,24 @@
         </nb-card-header>
 
         <nb-card-body>
+          {{ infoFormGroup.value | json }}
+
           <div class="form-group row">
             <label for="businessType" class="label col-sm-3 col-form-label">
               ประเภทผู้ติดต่อ
             </label>
             <div class="col-sm-9">
-              <nb-select selected="1" fullWidth id="businessType" formControlName="businessType">
-                <nb-option *ngFor="let type of businessType" [value]="type.value">{{ type.name }}
+              <nb-select
+                selected="1"
+                fullWidth
+                id="businessType"
+                formControlName="businessType"
+                (selectedChange)="selectedBusinessType($event)"
+              >
+                <nb-option
+                  *ngFor="let type of businessTypes"
+                  [value]="type.value"
+                  >{{ type.name }}
                 </nb-option>
               </nb-select>
             </div>
@@ -23,71 +34,111 @@
           <div class="form-group row" formGroupName="type">
             <label class="label col-sm-3 col-form-label">ประเภท</label>
             <div class="col-sm-9">
-              <nb-checkbox style="padding-right: 1.5rem;" formControlName="customer">ลูกค้า
+              <nb-checkbox
+                style="padding-right: 1.5rem;"
+                formControlName="customer"
+                >ลูกค้า
               </nb-checkbox>
-              <nb-checkbox style="padding-right: 1.5rem;" formControlName="vendor">ผู้จำหน่าย
+              <nb-checkbox
+                style="padding-right: 1.5rem;"
+                formControlName="vendor"
+                >ผู้จำหน่าย
               </nb-checkbox>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="taxId" class="label col-sm-3 col-form-label">
-              {{ infoFormGroup.get('businessType').value == 'บุคคลธรรมดา'? 'เลขประจำตัวประชาชน' : 'เลขผู้เสียภาษี'}}
+              {{
+                infoFormGroup.get('businessType').value == 'บุคคลธรรมดา'
+                  ? 'เลขประจำตัวประชาชน'
+                  : 'เลขผู้เสียภาษี'
+              }}
             </label>
             <div class="col-sm-9">
               <nb-form-field>
-                <nb-icon nbSuffix icon="at-outline" pack="eva"></nb-icon>
-                <input type="text" nbInput fullWidth id="taxId" placeholder="0 0000 00000 00 0"
-                  formControlName="taxId" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="taxId"
+                  placeholder="0 0000 00000 00 0"
+                  formControlName="taxId"
+                />
               </nb-form-field>
-
-
             </div>
           </div>
 
-          <div class="form-group row"
-            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'">
+          <div
+            class="form-group row"
+            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'"
+          >
             <label for="name" class="label col-sm-3 col-form-label">
               ชื่อผู้ติดต่อ
             </label>
             <div class="col-sm-9">
-              <input type="text" nbInput fullWidth id="name" formControlName="name"
-                placeholder="" />
+              <input
+                type="text"
+                nbInput
+                fullWidth
+                id="name"
+                formControlName="name"
+                placeholder=""
+              />
             </div>
           </div>
 
-          <div class="form-group row"
-            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'">
+          <div
+            class="form-group row"
+            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'"
+          >
             <label for="branchCode" class="label col-sm-3 col-form-label">
               สาขา
             </label>
 
             <div class="col-sm-9">
-              <nb-radio-group id="branchCode" [(value)]="businessBranch">
+              <nb-radio-group
+                id="branchCode"
+                [(value)]="businessBranch"
+                (valueChange)="selectedBranchCode($event)"
+              >
                 <nb-radio style="display: initial;" value="">
                   ไม่มี
                 </nb-radio>
-                <nb-radio style="display: initial;" value="00000">
+                <nb-radio style="display: initial;" value="headquarters">
                   สำนักงานใหญ่
                 </nb-radio>
-                <nb-radio style="display: initial;" value="hasBranch">
+                <nb-radio style="display: initial;" value="branch">
                   สาขา
                 </nb-radio>
               </nb-radio-group>
 
-              <input *ngIf="businessBranch == 'hasBranch'" style="width: 80px;" type="text" nbInput
-                id="BranchCode" placeholder="00000" formControlName="branchCode" />
+              <input
+                *ngIf="businessBranch === 'branch'"
+                style="width: 80px;"
+                type="text"
+                nbInput
+                id="BranchCode"
+                placeholder="00000"
+                formControlName="branchCode"
+              />
             </div>
           </div>
 
-          <div formGroupName="individual"
-            *ngIf="infoFormGroup.get('businessType').value == 'บุคคลธรรมดา'">
+          <div
+            formGroupName="individual"
+            *ngIf="businessBranch == 'บุคคลธรรมดา'"
+          >
             <div class="form-group row">
               <label for="prefixName" class="label col-sm-3 col-form-label">
                 คำนำหน้า
               </label>
               <div class="col-sm-9 row">
-                <nb-select selected="1" class="col-sm-2" formControlName="prefixName">
+                <nb-select
+                  selected="1"
+                  class="col-sm-2"
+                  formControlName="prefixName"
+                >
                   <nb-option value="นาย">นาย</nb-option>
                   <nb-option value="นางสาว">นางสาว</nb-option>
                   <nb-option value="นาง">นาง</nb-option>
@@ -100,8 +151,14 @@
                 ขื่อ
               </label>
               <div class="col-sm-9">
-                <input type="text" fullWidth nbInput id="firstName" placeholder="ชื่อจริง"
-                  formControlName="firstName" />
+                <input
+                  type="text"
+                  fullWidth
+                  nbInput
+                  id="firstName"
+                  placeholder="ชื่อจริง"
+                  formControlName="firstName"
+                />
               </div>
             </div>
             <div class="form-group row">
@@ -109,18 +166,37 @@
                 นามสกุล
               </label>
               <div class="col-sm-9">
-                <input type="text" fullWidth nbInput id="lastName" placeholder="นามสกุล"
-                  formControlName="lastName" />
+                <input
+                  type="text"
+                  fullWidth
+                  nbInput
+                  id="lastName"
+                  placeholder="นามสกุล"
+                  formControlName="lastName"
+                />
               </div>
             </div>
             <div class="form-group row">
-              <label for="birthDate" fullWidth class="label col-sm-3 col-form-label">
+              <label
+                for="birthDate"
+                fullWidth
+                class="label col-sm-3 col-form-label"
+              >
                 วัน/เดือน/ปี เกิด
               </label>
               <div class="col-sm-9">
-                <input nbInput fullWidth placeholder="วัน/เดือน/ปี เกิด"
-                  [nbDatepicker]="birtdatepicker" id="birthDate" formControlName="birthDate" />
-                <nb-datepicker #birtdatepicker format="dd/MM/yyyy"></nb-datepicker>
+                <input
+                  nbInput
+                  fullWidth
+                  placeholder="วัน/เดือน/ปี เกิด"
+                  [nbDatepicker]="birtdatepicker"
+                  id="birthDate"
+                  formControlName="birthDate"
+                />
+                <nb-datepicker
+                  #birtdatepicker
+                  format="dd/MM/yyyy"
+                ></nb-datepicker>
               </div>
             </div>
           </div>
@@ -131,49 +207,90 @@
                 ที่อยู่ตามทะเบียน
               </label>
               <div class="col-sm-9">
-                <textarea rows="2" nbInput fullWidth id="addressLine" formControlName="line"
-                  placeholder="ที่อยู่"></textarea>
+                <textarea
+                  rows="2"
+                  nbInput
+                  fullWidth
+                  id="addressLine"
+                  formControlName="line"
+                  placeholder="ที่อยู่"
+                ></textarea>
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="addressSubDistrict" class="label col-sm-3 col-form-label">
+              <label
+                for="addressSubDistrict"
+                class="label col-sm-3 col-form-label"
+              >
                 แขวง/ตำบล
               </label>
               <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="addressSubDistrict"
-                  formControlName="subDistrict" placeholder="แขวง/ตำบล" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="addressSubDistrict"
+                  formControlName="subDistrict"
+                  placeholder="แขวง/ตำบล"
+                />
               </div>
             </div>
             <div class="form-group row">
-              <label for="addressDistrict" class="label col-sm-3 col-form-label">
+              <label
+                for="addressDistrict"
+                class="label col-sm-3 col-form-label"
+              >
                 เขต/อำเภอ
               </label>
               <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="addressDistrict" formControlName="district"
-                  placeholder="เขต/อำเภอ" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="addressDistrict"
+                  formControlName="district"
+                  placeholder="เขต/อำเภอ"
+                />
               </div>
             </div>
             <div class="form-group row">
-              <label for="addressProvince" class="label col-sm-3 col-form-label">
+              <label
+                for="addressProvince"
+                class="label col-sm-3 col-form-label"
+              >
                 จังหวัด
               </label>
               <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="addressProvince" formControlName="province"
-                  placeholder="จังหวัด" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="addressProvince"
+                  formControlName="province"
+                  placeholder="จังหวัด"
+                />
               </div>
             </div>
             <div class="form-group row">
-              <label for="addressPostCode" class="label col-sm-3 col-form-label">
+              <label
+                for="addressPostCode"
+                class="label col-sm-3 col-form-label"
+              >
                 รหัสไปษณีย์
               </label>
               <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="addressPostCode" formControlName="postCode"
-                  placeholder="รหัสไปษณีย์" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="addressPostCode"
+                  formControlName="postCode"
+                  placeholder="รหัสไปษณีย์"
+                />
               </div>
             </div>
           </div>
-
         </nb-card-body>
       </nb-card>
       <!-- End Infomation Contact -->
@@ -184,54 +301,99 @@
         </nb-card-header>
         <nb-card-body>
           <div formGroupName="shippingAddress">
-
             <div class="form-group row">
               <label for="shippingLine" class="label col-sm-3 col-form-label">
                 ที่อยู่ส่งเอกสาร
               </label>
               <div class="col-sm-9">
-                <nb-checkbox style="padding-right: 1.5rem;" (checkedChange)="copyAddress($event)"
-                  value="customer">
-                  คัดลอกจากที่อยู่ตามทะเบียน</nb-checkbox>
-                <textarea rows="2" nbInput fullWidth id="shippingLine" formControlName="line"
-                  placeholder="ที่อยู่"></textarea>
+                <nb-checkbox
+                  style="padding-right: 1.5rem;"
+                  (checkedChange)="copyAddress($event)"
+                  value="customer"
+                >
+                  คัดลอกจากที่อยู่ตามทะเบียน</nb-checkbox
+                >
+                <textarea
+                  rows="2"
+                  nbInput
+                  fullWidth
+                  id="shippingLine"
+                  formControlName="line"
+                  placeholder="ที่อยู่"
+                ></textarea>
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="shippingSubDistrict" class="label col-sm-3 col-form-label">
+              <label
+                for="shippingSubDistrict"
+                class="label col-sm-3 col-form-label"
+              >
                 แขวง/ตำบล
               </label>
               <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="shippingSubDistrict"
-                  formControlName="subDistrict" placeholder="แขวง/ตำบล" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="shippingSubDistrict"
+                  formControlName="subDistrict"
+                  placeholder="แขวง/ตำบล"
+                />
               </div>
             </div>
             <div class="form-group row">
-              <label for="shippingDistrict" class="label col-sm-3 col-form-label">
+              <label
+                for="shippingDistrict"
+                class="label col-sm-3 col-form-label"
+              >
                 เขต/อำเภอ
               </label>
               <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="shippingDistrict"
-                  formControlName="district" placeholder="เขต/อำเภอ" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="shippingDistrict"
+                  formControlName="district"
+                  placeholder="เขต/อำเภอ"
+                />
               </div>
             </div>
             <div class="form-group row">
-              <label for="shippingProvince" class="label col-sm-3 col-form-label">
+              <label
+                for="shippingProvince"
+                class="label col-sm-3 col-form-label"
+              >
                 จังหวัด
               </label>
               <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="shippingProvince"
-                  formControlName="province" placeholder="จังหวัด" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="shippingProvince"
+                  formControlName="province"
+                  placeholder="จังหวัด"
+                />
               </div>
             </div>
             <div class="form-group row">
-              <label for="shippingPostCode" class="label col-sm-3 col-form-label">
+              <label
+                for="shippingPostCode"
+                class="label col-sm-3 col-form-label"
+              >
                 รหัสไปษณีย์
               </label>
               <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="shippingPostCode"
-                  formControlName="postCode" placeholder="รหัสไปษณีย์" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="shippingPostCode"
+                  formControlName="postCode"
+                  placeholder="รหัสไปษณีย์"
+                />
               </div>
             </div>
           </div>
@@ -245,8 +407,14 @@
             <div class="col-sm-9">
               <nb-form-field>
                 <nb-icon nbSuffix icon="phone-outline" pack="eva"></nb-icon>
-                <input type="text" nbInput fullWidth id="phone" formControlName="phone"
-                  placeholder="" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="phone"
+                  formControlName="phone"
+                  placeholder=""
+                />
               </nb-form-field>
             </div>
           </div>
@@ -260,8 +428,6 @@
                 <nb-icon nbSuffix icon="at-outline" pack="eva"></nb-icon>
                 <input type="text" nbInput fullWidth placeholder="" />
               </nb-form-field>
-
-
             </div>
           </div>
 
@@ -319,8 +485,6 @@
                 <nb-icon nbSuffix icon="at-outline" pack="eva"></nb-icon>
                 <input type="text" nbInput fullWidth placeholder="" />
               </nb-form-field>
-
-
             </div>
           </div>
 
@@ -335,9 +499,8 @@
               </nb-form-field>
             </div>
           </div>
-
-        </nb-card-body>
-      </nb-card><!-- End Primary Contact -->
+        </nb-card-body> </nb-card
+      ><!-- End Primary Contact -->
       <!-- Bank info -->
       <nb-card>
         <nb-card-header>
@@ -388,7 +551,6 @@
           </div>
         </nb-card-body>
       </nb-card>
-
     </div>
   </div>
 </form>
