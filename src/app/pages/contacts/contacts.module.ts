@@ -18,7 +18,8 @@ import {
 	NbDialogModule,
 	NbListModule,
 	NbLayoutModule,
-  NbTabsetModule
+	NbTabsetModule,
+	NbFormFieldModule
 } from '@nebular/theme';
 
 import { ContactsRoutingModule } from './contacts-routing.module';
@@ -38,8 +39,8 @@ const COMPONENTS = [
 	ContactNewComponent,
 	TableCellSuppliersNameRenderComponent,
 	TableCellContactTypeRenderComponent,
-  TableCellSuppliersContactRenderComponent,
-  ContactNewInfoComponent
+	TableCellSuppliersContactRenderComponent,
+	ContactNewInfoComponent
 ];
 
 const ENTRY_COMPONENTS = [
@@ -62,13 +63,14 @@ const MODULES = [
 	NbCheckboxModule,
 	NbRadioModule,
 	NbDatepickerModule,
+	NbFormFieldModule,
 	NbSelectModule,
 	NbLayoutModule,
 	ThemeModule,
 	Ng2SmartTableModule,
 	ContactsRoutingModule,
-  ReactiveFormsModule,
-  NbTabsetModule
+	ReactiveFormsModule,
+	NbTabsetModule
 ];
 const SERVICES = [];
 
