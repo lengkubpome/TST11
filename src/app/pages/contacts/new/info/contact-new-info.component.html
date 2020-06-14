@@ -69,45 +69,39 @@
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="taxId" class="label col-sm-3 col-form-label">
-              {{ infoFormGroup.get('businessType').value == 'บุคคลธรรมดา'? 'เลขประจำตัวประชาชน' : 'เลขผู้เสียภาษี'}}
-            </label>
-            <div class="col-sm-9">
-              <nb-form-field>
-                <nb-icon nbSuffix icon="at-outline" pack="eva"></nb-icon>
-                <input type="text" nbInput fullWidth id="taxId" placeholder="0 0000 00000 00 0"
-                  formControlName="taxId" />
-              </nb-form-field>
-
-
-            </div>
-          </div>
-
-          <div class="form-group row"
-            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'">
+          <div
+            class="form-group row"
+            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'"
+          >
             <label for="name" class="label col-sm-3 col-form-label">
               ชื่อผู้ติดต่อ
             </label>
             <div class="col-sm-9">
-              <input type="text" nbInput fullWidth id="name" formControlName="name"
-                placeholder="" />
+              <input
+                type="text"
+                nbInput
+                fullWidth
+                id="name"
+                formControlName="name"
+                placeholder=""
+              />
             </div>
           </div>
 
-          <div class="form-group row"
-            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'">
+          <div
+            class="form-group row"
+            *ngIf="infoFormGroup.get('businessType').value != 'บุคคลธรรมดา'"
+          >
             <label for="branchCode" class="label col-sm-3 col-form-label">
               สาขา
             </label>
 
             <div class="col-sm-9">
               <nb-radio-group
-                id="branchCode"
                 [(value)]="businessBranch"
                 (valueChange)="selectedBranchCode($event)"
               >
-                <nb-radio style="display: initial;" value="">
+                <nb-radio style="display: initial;" value="none">
                   ไม่มี
                 </nb-radio>
                 <nb-radio style="display: initial;" value="headquarters">
@@ -123,7 +117,6 @@
                 style="width: 80px;"
                 type="text"
                 nbInput
-                id="BranchCode"
                 placeholder="00000"
                 formControlName="branchCode"
               />
@@ -139,7 +132,11 @@
                 คำนำหน้า
               </label>
               <div class="col-sm-9 row">
-                <nb-select selected="1" class="col-sm-2" formControlName="prefixName">
+                <nb-select
+                  selected="1"
+                  class="col-sm-2"
+                  formControlName="prefixName"
+                >
                   <nb-option value="นาย">นาย</nb-option>
                   <nb-option value="นางสาว">นางสาว</nb-option>
                   <nb-option value="นาง">นาง</nb-option>
@@ -178,13 +175,26 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="birthDate" fullWidth class="label col-sm-3 col-form-label">
+              <label
+                for="birthDate"
+                fullWidth
+                class="label col-sm-3 col-form-label"
+              >
                 วัน/เดือน/ปี เกิด
               </label>
               <div class="col-sm-9">
-                <input nbInput fullWidth placeholder="วัน/เดือน/ปี เกิด"
-                  [nbDatepicker]="birtdatepicker" id="birthDate" formControlName="birthDate" />
-                <nb-datepicker #birtdatepicker format="dd/MM/yyyy"></nb-datepicker>
+                <input
+                  nbInput
+                  fullWidth
+                  placeholder="วัน/เดือน/ปี เกิด"
+                  [nbDatepicker]="birtdatepicker"
+                  id="birthDate"
+                  formControlName="birthDate"
+                />
+                <nb-datepicker
+                  #birtdatepicker
+                  format="dd/MM/yyyy"
+                ></nb-datepicker>
               </div>
             </div>
           </div>
@@ -279,7 +289,6 @@
               </div>
             </div>
           </div>
-
         </nb-card-body>
       </nb-card>
       <!-- End Infomation Contact -->
@@ -409,25 +418,39 @@
           </div>
 
           <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">
+            <label for="email" class="label col-sm-3 col-form-label">
               อีเมล
             </label>
             <div class="col-sm-9">
               <nb-form-field>
                 <nb-icon nbSuffix icon="at-outline" pack="eva"></nb-icon>
-                <input type="text" nbInput fullWidth placeholder="" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="email"
+                  formControlName="email"
+                  placeholder=""
+                />
               </nb-form-field>
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">
+            <label for="line" class="label col-sm-3 col-form-label">
               ไลน์ไอดี
             </label>
             <div class="col-sm-9">
               <nb-form-field>
                 <nb-icon nbSuffix icon="hash-outline" pack="eva"></nb-icon>
-                <input type="text" nbInput fullWidth placeholder="" />
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="line"
+                  formControlName="line"
+                  placeholder=""
+                />
               </nb-form-field>
             </div>
           </div>
@@ -444,48 +467,78 @@
           รายละเอียดผู้ติดต่อหลัก
         </nb-card-header>
         <nb-card-body>
-          <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">
-              ชื่อผู้ติดต่อ
-            </label>
-            <div class="col-sm-9">
-              <input type="text" fullWidth nbInput placeholder="" />
+          <div formGroupName="primaryContactInfo">
+            <div class="form-group row">
+              <label for="primaryName" class="label col-sm-3 col-form-label">
+                ชื่อผู้ติดต่อ
+              </label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  fullWidth
+                  nbInput
+                  id="primaryName"
+                  formControlName="contactName"
+                  placeholder=""
+                />
+              </div>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">
-              เบอร์โทรศัพท์
-            </label>
-            <div class="col-sm-9">
-              <nb-form-field>
-                <nb-icon nbSuffix icon="phone-outline" pack="eva"></nb-icon>
-                <input type="text" nbInput fullWidth placeholder="" />
-              </nb-form-field>
+            <div class="form-group row">
+              <label for="primaryPhone" class="label col-sm-3 col-form-label">
+                เบอร์โทรศัพท์
+              </label>
+              <div class="col-sm-9">
+                <nb-form-field>
+                  <nb-icon nbSuffix icon="phone-outline" pack="eva"></nb-icon>
+                  <input
+                    type="text"
+                    nbInput
+                    fullWidth
+                    id="primaryPhone"
+                    formControlName="phone"
+                    placeholder=""
+                  />
+                </nb-form-field>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">
-              อีเมล
-            </label>
-            <div class="col-sm-9">
-              <nb-form-field>
-                <nb-icon nbSuffix icon="at-outline" pack="eva"></nb-icon>
-                <input type="text" nbInput fullWidth placeholder="" />
-              </nb-form-field>
+            <div class="form-group row">
+              <label for="primaryEmail" class="label col-sm-3 col-form-label">
+                อีเมล
+              </label>
+              <div class="col-sm-9">
+                <nb-form-field>
+                  <nb-icon nbSuffix icon="at-outline" pack="eva"></nb-icon>
+                  <input
+                    type="text"
+                    nbInput
+                    fullWidth
+                    id="primaryEmail"
+                    formControlName="email"
+                    placeholder=""
+                  />
+                </nb-form-field>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">
-              ไลน์ไอดี
-            </label>
-            <div class="col-sm-9">
-              <nb-form-field>
-                <nb-icon nbSuffix icon="hash-outline" pack="eva"></nb-icon>
-                <input type="text" nbInput fullWidth placeholder="" />
-              </nb-form-field>
+            <div class="form-group row">
+              <label for="primaryLine" class="label col-sm-3 col-form-label">
+                ไลน์ไอดี
+              </label>
+              <div class="col-sm-9">
+                <nb-form-field>
+                  <nb-icon nbSuffix icon="hash-outline" pack="eva"></nb-icon>
+                  <input
+                    type="text"
+                    nbInput
+                    fullWidth
+                    id="primaryLine"
+                    formControlName="line"
+                    placeholder=""
+                  />
+                </nb-form-field>
+              </div>
             </div>
           </div>
         </nb-card-body> </nb-card
@@ -496,51 +549,74 @@
           ข้อมูลธนาคาร
         </nb-card-header>
         <nb-card-body>
-          <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">
-              ธนาคาร
-            </label>
-            <div class="col-sm-9">
-              <input type="text" fullWidth nbInput placeholder="" />
+          <div formGroupName="bankAccount">
+            <div class="form-group row">
+              <label for="accountName" class="label col-sm-3 col-form-label">
+                ชื่อบัญชี
+              </label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  fullWidth
+                  nbInput
+                  id="accountName"
+                  formControlName="accountName"
+                  placeholder=""
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="accountNumber" class="label col-sm-3 col-form-label">
+                เลขบัญชี
+              </label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="accountNumber"
+                  formControlName="accountNumber"
+                  placeholder=""
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="bankName" class="label col-sm-3 col-form-label">
+                สาขาธนาคาร
+              </label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  id="bankName"
+                  formControlName="bankName"
+                  placeholder=""
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="accountType" class="label col-sm-3 col-form-label">
+                ประเภทบัญชี
+              </label>
+              <div class="col-sm-9">
+                <nb-radio-group formControlName="accountType">
+                  <nb-radio style="display: initial;" name="accountType" value="saving">
+                    ออมทรัพย์
+                  </nb-radio>
+                  <nb-radio style="display: initial;" name="accountType"  value="current">
+                    กระแสรายวัน
+                  </nb-radio>
+                </nb-radio-group>
+              </div>
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">
-              เลขบัญชี
-            </label>
-            <div class="col-sm-9">
-              <input type="text" nbInput fullWidth placeholder="" />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">
-              สาขาธนาคาร
-            </label>
-            <div class="col-sm-9">
-              <input type="text" nbInput fullWidth placeholder="" />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">
-              ประเภทบัญชี
-            </label>
-            <div class="col-sm-9">
-              <nb-radio-group>
-                <nb-radio style="display: initial;" [value]="'This is value 1'">
-                  ออมทรัพย์
-                </nb-radio>
-                <nb-radio style="display: initial;" [value]="'This is value 2'">
-                  กระแสรายวัน
-                </nb-radio>
-              </nb-radio-group>
-            </div>
-          </div>
         </nb-card-body>
       </nb-card>
-
     </div>
   </div>
 </form>

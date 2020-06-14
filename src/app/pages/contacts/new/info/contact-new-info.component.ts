@@ -2,13 +2,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-	selector: 'ngx-contact-new-info',
-	templateUrl: './contact-new-info.component.html',
-	styleUrls: [ './contact-new-info.component.scss' ],
-	changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ngx-contact-new-info',
+  templateUrl: './contact-new-info.component.html',
+  styleUrls: ['./contact-new-info.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactNewInfoComponent implements OnInit {
-	infoFormGroup: FormGroup;
+  infoFormGroup: FormGroup;
 
   businessTypes: any = [
     { value: 'บริษัทจำกัด', name: 'บริษัทจำกัด' },
@@ -18,9 +18,9 @@ export class ContactNewInfoComponent implements OnInit {
     { value: 'บุคคลธรรมดา', name: 'บุคคลธรรมดา' },
     { value: 'อื่นๆ', name: 'อื่นๆ' },
   ];
-  businessBranch = '';
+  businessBranch = 'none';
 
-	constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.infoFormGroup = this.fb.group({
@@ -31,7 +31,7 @@ export class ContactNewInfoComponent implements OnInit {
       }),
       taxId: [''],
       name: [''],
-      branchCode: ['', Validators.required],
+      branchCode: ['none', Validators.required],
       individual: this.fb.group({
         prefixName: [''],
         firstName: [''],
@@ -53,6 +53,20 @@ export class ContactNewInfoComponent implements OnInit {
         postCode: [],
       }),
       phone: [],
+      email: [],
+      line: [],
+      primaryContactInfo: this.fb.group({
+        contactName: [],
+        phone: [],
+        email: [],
+        line: [],
+      }),
+      bankAccount: this.fb.group({
+        accountName: [],
+        accountNumber: [],
+        bankName: [],
+        accountType: ['saving'],
+      }),
     });
   }
 
@@ -77,8 +91,13 @@ export class ContactNewInfoComponent implements OnInit {
     this.infoFormGroup.get('branchCode').reset();
     if (event === 'headquarters') {
       this.infoFormGroup.get('branchCode').setValue('00000');
-    } else {
+    } else if (event === 'branch') {
       this.infoFormGroup.get('branchCode').setValue('');
+    } else {
+      this.infoFormGroup.get('branchCode').setValue('none');
     }
+
+    console.log('xxxx');
+
   }
 }
